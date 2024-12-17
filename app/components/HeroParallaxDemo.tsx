@@ -1,7 +1,10 @@
 'use client';
+import React from 'react';
+import { HeroParallax } from './HeroParallax';
 
-import { HeroParallaxDemo } from './components/HeroParallaxDemo';
-
+export function HeroParallaxDemo() {
+  return <HeroParallax products={products} />;
+}
 export const products = [
   {
     title: 'Moonbeam',
@@ -97,17 +100,3 @@ export const products = [
       'https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png',
   },
 ];
-
-export default function Home() {
-  return (
-    <div>
-      <div className='bg-black bg-opacity-90 h-full'>
-        <HeroParallaxDemo />
-      </div>
-      <section className='h-[1000px]'>
-        <div>ashduashd </div>
-        <p>jaisjdiasjda</p>
-      </section>
-    </div>
-  );
-}

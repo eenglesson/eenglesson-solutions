@@ -9,6 +9,7 @@ body {
 .underline-animation {
   position: relative;
   cursor: pointer;
+  z-index: 40;
 }
 
 .underline-animation::after {

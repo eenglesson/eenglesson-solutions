@@ -24,7 +24,7 @@ export default function Footer() {
     <footer className='shadow-[0px_-1px_6px_0px_rgba(0,_0,_0,_0.05)] flex justify-center'>
       <div className='flex flex-col w-full gap-12 py-12 px-4 sm:px-8 md:flex-row border-grey30 max-w-[1400px]'>
         <aside className='flex flex-col gap-4 w-full '>
-          <aside className='flex font-medium h-full gap-2'>
+          <aside className='flex font-medium h-fit gap-2'>
             <div className='flex border-r-2 border-black pr-2'>
               <p className='text-h5'>E</p>
             </div>
