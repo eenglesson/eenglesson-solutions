@@ -69,7 +69,7 @@ export const HeroParallax = ({
         }}
         className=''
       >
-        <motion.div className='flex flex-row-reverse space-x-reverse space-x-20 mb-20'>
+        <motion.div className='flex flex-row-reverse space-x-reverse space-x-10 mb-10 md:mb-20'>
           {firstRow.map((product) => (
             <ProductCard
               product={product}
@@ -78,7 +78,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className='flex flex-row  mb-20 space-x-20 '>
+        <motion.div className='flex flex-row mb-10 md:mb-20 space-x-10 '>
           {secondRow.map((product) => (
             <ProductCard
               product={product}
@@ -87,7 +87,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className='flex flex-row-reverse space-x-reverse space-x-20'>
+        <motion.div className='flex flex-row-reverse space-x-reverse space-x-10 mb-10 md:mb-20'>
           {thirdRow.map((product) => (
             <ProductCard
               product={product}
@@ -108,7 +108,7 @@ export const Header = () => {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className='text-h3 sm:text-h2 md:text-[64px] text-white font-bold line-clamp-1'
+        className='text-h3 sm:text-h2 md:text-[64px] text-white font-bold'
       >
         Let’s Create Your Masterpiece
       </motion.h1>
@@ -157,7 +157,7 @@ export const ProductCard = ({
         y: -20,
       }}
       key={product.title}
-      className='group/product h-96 w-[30rem] relative flex-shrink-0'
+      className='group/product h-52 w-80 md:h-96 md:w-[30rem] relative flex-shrink-0'
     >
       <Link
         href={product.link}
