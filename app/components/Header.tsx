@@ -22,7 +22,7 @@ export default function Header({ backgroundImage }: HeroProps) {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className='text-h2 md:text-[64px] font-semibold leading-[1.1]'
+            className='text-h3 sm:text-h2 md:text-[64px] font-semibold leading-[1.1]'
           >
             Let’s Create Your Masterpiece
           </motion.h1>

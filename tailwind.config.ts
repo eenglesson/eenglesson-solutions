@@ -12,6 +12,21 @@ export default {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
       },
+
+      fontSize: {
+        body: ['16px', '1.4'],
+        h1: ['48px', '1.4'],
+        h2: ['40px', '1.4'],
+        h3: ['32px', '1.4'],
+        h4: ['24px', '1.4'],
+        h5: ['20px', '1.4'],
+        h6: ['18px', '1.4'],
+        small: ['14px', '1.4'],
+        tiny: ['12px', '1.4'],
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
       keyframes: {
         line1Open: {
           '0%': {
