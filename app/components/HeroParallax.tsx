@@ -9,6 +9,10 @@ import {
 } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
+import { FlipWords } from './flipWords';
+
+const words = ['Future', 'Dream', 'Identity', 'Brand', 'Vision'];
 
 export const HeroParallax = ({
   products,
@@ -20,8 +24,8 @@ export const HeroParallax = ({
   }[];
 }) => {
   const firstRow = products.slice(0, 10);
-  const secondRow = products.slice(0, 10);
-  const thirdRow = products.slice(0, 15);
+  const secondRow = products.slice(3, 13);
+  const thirdRow = products.slice(6, 15);
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -35,15 +39,15 @@ export const HeroParallax = ({
     springConfig
   );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
+    useTransform(scrollYProgress, [0, 1], [-1000, -2000]),
     springConfig
   );
   const rotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
+    useTransform(scrollYProgress, [0, 0.2], [30, 0]),
     springConfig
   );
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.3], [0.2, 0.8]),
+    useTransform(scrollYProgress, [0, 0.2], [0.3, 0.85]),
     springConfig
   );
   const rotateZ = useSpring(
@@ -51,15 +55,17 @@ export const HeroParallax = ({
     springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-600, 100]),
+    useTransform(scrollYProgress, [0, 0.2], [-700, 100]),
     springConfig
   );
   return (
     <div
       ref={ref}
-      className='h-fit py-40 overflow-hidden antialiased relative flex flex-col self-auto [transform-style:preserve-3d]'
+      className='h-fit py-40 overflow-hidden bg-black/95 antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]'
     >
-      <Header />
+      <div className='relative z-10'>
+        <Header />
+      </div>
       <motion.div
         style={{
           rotateX,
@@ -67,9 +73,9 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className=''
+        className='mt-[500px]'
       >
-        <motion.div className='flex flex-row-reverse space-x-reverse space-x-10 mb-10 md:mb-20'>
+        <motion.div className='flex flex-row-reverse space-x-reverse space-x-12 mb-12'>
           {firstRow.map((product) => (
             <ProductCard
               product={product}
@@ -78,7 +84,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className='flex flex-row mb-10 md:mb-20 space-x-10 '>
+        <motion.div className='flex flex-row mb-12 space-x-12 '>
           {secondRow.map((product) => (
             <ProductCard
               product={product}
@@ -87,7 +93,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className='flex flex-row-reverse space-x-reverse space-x-10 mb-10 md:mb-20'>
+        <motion.div className='flex flex-row-reverse space-x-reverse space-x-12'>
           {thirdRow.map((product) => (
             <ProductCard
               product={product}
@@ -103,14 +109,14 @@ export const HeroParallax = ({
 
 export const Header = () => {
   return (
-    <div className='w-full relative mx-auto py-20 md:py-40 px-8  left-0 top-0'>
+    <div className='max-w-7xl pl-8 flex flex-col gap-4 absolute py-20 md:py-40 px-4 w-full left-0 top-0'>
       <motion.h1
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className='text-h3 sm:text-h2 md:text-[64px] text-white font-bold'
+        className='text-h3 sm:text-h2 md:text-[64px] h-fit text-neutral-300 font-bold md:leading-[1] leading-[1]'
       >
-        Let’s Create Your Masterpiece
+        Let’s Create Your <FlipWords words={words} />
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, x: 50 }}
@@ -127,10 +133,13 @@ export const Header = () => {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
-        className='p-0 h-fit w-fit group flex gap-2 items-center text-grey20'
+        className='p-0 h-fit w-fit flex gap-2 items-center text-white mt-6'
       >
-        <button className='text-small items-center group flex md:text-h6 font-normal rounded-full transition-all duration-200 text-white underline-animation underline-white'>
+        <button className='group text-small items-center flex md:text-h6 hover:bg-white transition-transform duration-200 hover:text-black sm:font-normal z-30 rounded-full border py-2 px-4 gap-2'>
           Book an appointment
+          <div className='transition-transform duration-200 group-hover:rotate-45'>
+            <ArrowUpRight className='sm:w-[22px] sm:h-[22px] w-[18px] h-[18px]' />
+          </div>
         </button>
       </motion.aside>
     </div>
@@ -157,7 +166,7 @@ export const ProductCard = ({
         y: -20,
       }}
       key={product.title}
-      className='group/product h-52 w-80 md:h-96 md:w-[30rem] relative flex-shrink-0'
+      className='group/product h-64 sm:h-96 w-[22rem] sm:w-[30rem] relative flex-shrink-0'
     >
       <Link
         href={product.link}

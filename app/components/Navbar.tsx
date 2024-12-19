@@ -3,24 +3,6 @@ import React, { useEffect, useState } from 'react';
 
 import { motion } from 'motion/react';
 
-const fadeInAnimationVariants = {
-  initial: {
-    opacity: 0,
-    y: -80,
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.1,
-      type: 'spring',
-      stiffness: 800,
-      damping: 80,
-      delay: 0,
-    },
-  },
-};
-
 const links = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/About' },
@@ -74,7 +56,7 @@ export default function Navbar() {
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
             className='text-h5'
           >
             E
@@ -82,13 +64,13 @@ export default function Navbar() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
             className={`flex ${borderColor} border-r-2`}
           ></motion.div>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
             className='flex flex-col h-full text-h5'
           >
             <p>Englesson</p>
@@ -101,7 +83,7 @@ export default function Navbar() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.27 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
           >
             <span
               className={`block ${bgColor} h-[2px] rounded-full transition-transform duration-300 ${
@@ -117,7 +99,7 @@ export default function Navbar() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.3 }}
+            transition={{ duration: 0.3, delay: 0.32 }}
           >
             <span
               className={`block ${bgColor} h-[2px] rounded-full transition-transform duration-300 ${
@@ -139,12 +121,21 @@ export default function Navbar() {
           {links.map((link, i) => (
             <motion.div
               key={i}
-              variants={fadeInAnimationVariants}
-              initial='initial'
-              whileInView='animate'
+              initial={{ opacity: 0, y: -15 }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.1 * i,
+                  type: 'spring',
+                  stiffness: 200,
+                  damping: 20,
+                  mass: 0.2,
+                },
+              }}
               className='z-20'
             >
-              <div key={i}>
+              <div>
                 <p className='text-body text-black'>{link.label}</p>
               </div>
             </motion.div>
@@ -199,7 +190,9 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.25 + i * 0.1 }}
                 key={i}
-                className={isScrolled ? 'text-black' : 'text-white'}
+                className={`underline-animation  ${
+                  isScrolled ? 'text-black' : 'text-white'
+                }`}
               >
                 {link.label}
               </motion.p>

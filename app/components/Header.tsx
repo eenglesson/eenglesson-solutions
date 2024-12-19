@@ -21,7 +21,7 @@ export default function Header({ backgroundImage }: HeroProps) {
           <motion.h1
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
             className='text-h3 sm:text-h2 md:text-[64px] font-semibold leading-[1.1]'
           >
             Let’s Create Your Masterpiece
@@ -29,7 +29,7 @@ export default function Header({ backgroundImage }: HeroProps) {
           <motion.p
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
             className='text-small max-w-[1200px] text-grey20 md:text-h6 md:w-2/3'
           >
             I create modern, minimalist websites that let your brand stand out,
@@ -41,10 +41,10 @@ export default function Header({ backgroundImage }: HeroProps) {
         <motion.aside
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.3, delay: 0.4 }}
           className='p-0 h-fit w-fit group flex gap-2 items-center text-grey20'
         >
-          <button className='text-small items-center group flex md:text-h6 font-normal rounded-full transition-all duration-200 text-grey20 underline-animation underline-white'>
+          <button className='text-small items-center group flex md:text-h6 font-normal rounded-full transition-all duration-200 text-grey20 underline-animation underline-white border'>
             Book an appointment
           </button>
         </motion.aside>
