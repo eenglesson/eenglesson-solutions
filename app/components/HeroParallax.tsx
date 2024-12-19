@@ -116,7 +116,8 @@ export const Header = () => {
         transition={{ duration: 0.5 }}
         className='text-h3 sm:text-h2 md:text-[64px] h-fit text-neutral-300 font-bold md:leading-[1] leading-[1]'
       >
-        Let’s Create Your <FlipWords words={words} />
+        Let’s Create Your <br className='block sm:hidden' />{' '}
+        <FlipWords words={words} />
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, x: 50 }}
