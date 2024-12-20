@@ -1,6 +1,5 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-
 import { motion } from 'motion/react';
 
 const links = [
@@ -22,7 +21,16 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 2000) {
+      // Get the HeroParallax element
+      const heroElement = document.querySelector('.hero-parallax');
+      if (!heroElement) return;
+
+      // Get the height of the HeroParallax
+      const heroHeight = heroElement.getBoundingClientRect().height;
+
+      // Check if we've scrolled past the hero section
+      if (window.scrollY > heroHeight - 60) {
+        // -60 to start transition slightly before
         setIsScrolled(true);
         setIsOpen(false);
       } else {

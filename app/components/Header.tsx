@@ -44,7 +44,7 @@ export default function Header({ backgroundImage }: HeroProps) {
           transition={{ duration: 0.3, delay: 0.4 }}
           className='p-0 h-fit w-fit group flex gap-2 items-center text-grey20'
         >
-          <button className='text-small items-center group flex md:text-h6 font-normal rounded-full transition-all duration-200 text-grey20 underline-animation underline-white border'>
+          <button className='text-small items-center group flex md:text-h6 font-normal rounded-full transition-all duration-200 text-grey20 underline-animation underline-white'>
             Book an appointment
           </button>
         </motion.aside>

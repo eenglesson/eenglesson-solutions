@@ -7,12 +7,12 @@ import {
   useSpring,
   MotionValue,
 } from 'framer-motion';
+
 import Image from 'next/image';
-import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { FlipWords } from './flipWords';
 
-const words = ['Future', 'Dream', 'Identity', 'Brand', 'Vision'];
+const words = ['Masterpiece', 'Future', 'Dream', 'Identity', 'Brand', 'Vision'];
 
 export const HeroParallax = ({
   products,
@@ -61,7 +61,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className='h-fit py-40 overflow-hidden bg-black/95 antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]'
+      className='hero-parallax h-fit py-40 overflow-hidden bg-black/95 antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]'
     >
       <div className='relative z-10'>
         <Header />
@@ -114,7 +114,7 @@ export const Header = () => {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
-        className='text-h3 sm:text-h2 md:text-[64px] h-fit text-neutral-300 font-bold md:leading-[1] leading-[1]'
+        className='text-h3 sm:text-h2 md:text-[64px] h-fit text-white font-bold md:leading-[1] leading-[1]'
       >
         Let’s Create Your <br className='block sm:hidden' />{' '}
         <FlipWords words={words} />
@@ -123,7 +123,7 @@ export const Header = () => {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className='text-small max-w-[1200px] text-white md:text-h6 md:w-2/3'
+        className='text-small max-w-[1200px] text-white md:text-h5 md:w-2/3'
       >
         I create modern, minimalist websites that let your brand stand out,
         speak for itself, and connect with your audience through simplicity,
@@ -163,28 +163,17 @@ export const ProductCard = ({
       style={{
         x: translate,
       }}
-      whileHover={{
-        y: -20,
-      }}
-      key={product.title}
       className='group/product h-64 sm:h-96 w-[22rem] sm:w-[30rem] relative flex-shrink-0'
     >
-      <Link
-        href={product.link}
-        className='block group-hover/product:shadow-2xl '
-      >
-        <Image
-          src={product.thumbnail}
-          height='600'
-          width='600'
-          className='object-cover object-left-top absolute h-full w-full inset-0'
-          alt={product.title}
-        />
-      </Link>
-      <div className='absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none'></div>
-      <h2 className='absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white'>
-        {product.title}
-      </h2>
+      <Image
+        src={product.thumbnail}
+        height='600'
+        width='600'
+        className='object-cover object-left-top absolute h-full w-full inset-0'
+        alt={product.title}
+      />
+
+      <div className='absolute inset-0 h-full w-full opacity-0  bg-black pointer-events-none'></div>
     </motion.div>
   );
 };
