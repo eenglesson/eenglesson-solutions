@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
+import { ArrowUpRight } from 'lucide-react';
 
 const links = [
   { label: 'Home', path: '/' },
@@ -153,13 +154,13 @@ export default function Navbar() {
 
       {/* Larger screen navbar */}
       <nav
-        className={`fixed top-0 left-0 z-50 w-full hidden md:flex items-center justify-between py-4 px-8 transition-all duration-300 ${
+        className={`fixed top-0 left-0 z-50 w-full hidden md:flex h-16 items-center justify-between px-8 transition-all duration-300 ${
           isScrolled
             ? 'bg-white shadow-[0px_1px_6px_0px_rgba(0,_0,_0,_0.05)]'
             : 'bg-transparent'
         }`}
       >
-        <div className='relative flex w-full mx-auto items-center'>
+        <div className='relative flex w-full justify-between mx-auto items-center'>
           {/* Left Section */}
           <aside
             className={`flex justify-center h-full gap-2 ${
@@ -207,7 +208,21 @@ export default function Navbar() {
             ))}
           </div>
           {/* Right Section */}
-          <div></div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.65 }}
+          >
+            <button
+              className={`${
+                isScrolled ? 'flex' : 'hidden'
+              } group text-black border items-center border-black hover:text-white hover:bg-black rounded-full px-4 py-1.5 gap-1`}
+            >
+              Contact me
+              <ArrowUpRight className='w-[18px] h-[18px] transition-transform duration-200 group-hover:rotate-45' />
+            </button>
+          </motion.div>
         </div>
       </nav>
     </>

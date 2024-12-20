@@ -109,7 +109,7 @@ export const HeroParallax = ({
 
 export const Header = () => {
   return (
-    <div className='max-w-7xl pl-8 flex flex-col gap-4 absolute py-20 md:py-40 px-4 w-full left-0 top-0'>
+    <div className='max-w-7xl pl-4 sm:pl-8 flex flex-col gap-4 absolute py-20 md:py-40 px-4 w-full left-0 top-0'>
       <motion.h1
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
