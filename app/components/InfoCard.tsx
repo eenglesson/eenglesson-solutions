@@ -30,7 +30,7 @@ const InfoCard = ({ icon, title, description, className }: InfoCardProps) => {
         {/* Gradient border */}
         <div className='absolute -inset-1 bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 rounded-2xl opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300'></div>
         {/* Icon container */}
-        <div className='relative p-3 rounded-2xl bg-gray-100'>
+        <div className='relative p-3 rounded-2xl bg-gray-100 z-10'>
           <Icon className='h-6 w-6 text-gray-800' />
         </div>
       </motion.div>

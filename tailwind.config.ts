@@ -66,6 +66,10 @@ export default {
         sans: ['Inter', 'sans-serif'],
       },
       keyframes: {
+        scroll: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
         line1Open: {
           '0%': {
             transform: 'translateY(0) rotate(0deg)',
@@ -112,6 +116,7 @@ export default {
         },
       },
       animation: {
+        scroll: 'scroll 40s linear infinite',
         line1Open: 'line1Open 0.5s forwards',
         line2Open: 'line2Open 0.5s forwards',
         line1Close: 'line1Close 0.5s forwards',
