@@ -61,7 +61,7 @@ const items = [
   {
     icon: <SiMongodb size={24} className='text-[#47A248]' />,
     title: 'MongoDB',
-    href: 'https://www.mongodb.com',
+    href: 'https://www.mongodb.com/products/platform/atlas-database',
   },
 ];
 
