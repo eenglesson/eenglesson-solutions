@@ -1,21 +1,29 @@
 'use client';
+
 import React from 'react';
-import * as Icons from 'lucide-react'; // Import all icons dynamically
+import * as LucideIcons from 'lucide-react'; // Import entire library
+import type { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { GlowEffect } from '@/components/ui/glow-effect';
 
 interface InfoCardProps {
-  icon: string; // Now `icon` is a string
+  iconName: string;
   title: string;
   description: string;
   className?: string;
 }
 
-const InfoCard = ({ icon, title, description, className }: InfoCardProps) => {
-  const Icon: React.ComponentType<React.SVGProps<SVGSVGElement>> = (Icons[
-    icon as keyof typeof Icons
-  ] || Icons.HelpCircle) as React.ComponentType<React.SVGProps<SVGSVGElement>>;
-
+export function InfoCard({
+  iconName,
+  title,
+  description,
+  className,
+}: InfoCardProps) {
+  // Dynamic lookup from the library; fallback to, say, "Zap" if not found
+  const Icon =
+    (LucideIcons as unknown as Record<string, LucideIcon>)[iconName] ??
+    LucideIcons.Zap;
   return (
     <div
       className={cn('flex flex-col items-center text-center p-6', className)}
@@ -27,13 +35,23 @@ const InfoCard = ({ icon, title, description, className }: InfoCardProps) => {
         transition={{ duration: 0.3, delay: 0.1 }}
         className='relative group mb-4'
       >
-        {/* Gradient border */}
-        <div className='absolute -inset-1 bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 rounded-2xl opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-200'></div>
+        {/* Glow effect as an absolutely positioned element with a negative inset */}
+        <GlowEffect
+          colors={['#2563EB', '#14B8A6', '#A78BFA', '#3B82F6', '#60A5FA']}
+          mode='colorShift'
+          blur='medium'
+          duration={6}
+          scale={1}
+          // Negative inset makes it a “border” around the icon
+          className='absolute -inset-0 rounded-2xl'
+        />
+
         {/* Icon container */}
         <div className='relative p-3 rounded-2xl bg-gray-100 z-10'>
           <Icon className='h-6 w-6 text-gray-800' />
         </div>
       </motion.div>
+
       <motion.h3
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -43,6 +61,7 @@ const InfoCard = ({ icon, title, description, className }: InfoCardProps) => {
       >
         {title}
       </motion.h3>
+
       <motion.p
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -54,6 +73,6 @@ const InfoCard = ({ icon, title, description, className }: InfoCardProps) => {
       </motion.p>
     </div>
   );
-};
+}
 
 export default InfoCard;

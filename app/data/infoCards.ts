@@ -1,36 +1,44 @@
-export const infoCards = [
+// app/data/infoCards.ts
+
+export interface InfoCard {
+  iconName: string;
+  title: string;
+  description: string;
+}
+
+export const infoCards: InfoCard[] = [
   {
-    icon: 'Zap',
+    iconName: 'Zap',
     title: 'Lightning Fast',
     description:
       'We craft websites optimized for speed, ensuring seamless user experiences that load in a flash.',
   },
   {
-    icon: 'Globe',
+    iconName: 'Globe',
     title: 'Global Reach',
     description:
       'Our designs are built to captivate audiences worldwide, making your brand truly unforgettable.',
   },
   {
-    icon: 'Palette',
+    iconName: 'Palette',
     title: 'Custom Designs',
     description:
       'Tailored to your vision, we deliver unique, eye-catching designs that elevate your online presence.',
   },
   {
-    icon: 'Settings',
+    iconName: 'Settings',
     title: 'Dynamic Functionality',
     description:
       'From e-commerce to interactive features, we build websites that work as beautifully as they look.',
   },
   {
-    icon: 'Shield',
+    iconName: 'Shield',
     title: 'Secure & Reliable',
     description:
       'Your site’s safety is our priority. We implement robust security measures to keep your data safe.',
   },
   {
-    icon: 'Users',
+    iconName: 'Users',
     title: 'User-Centered',
     description:
       'Our designs prioritize user experience, ensuring intuitive navigation and engagement across devices.',

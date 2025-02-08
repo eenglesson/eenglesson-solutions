@@ -7,6 +7,7 @@ body {
 }
 
 .underline-animation {
+  text-decoration: none;
   position: relative;
   cursor: pointer;
   z-index: 40;
@@ -23,6 +24,8 @@ body {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
+  will-change: transform; /* optimization hint */
+  backface-visibility: hidden;
 }
 
 .underline-animation:hover::after {
