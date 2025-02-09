@@ -6,12 +6,12 @@ interface SectionTitleProps {
 
 export default function SectionTitle({ title, paragraph }: SectionTitleProps) {
   return (
-    <div className='w-full flex flex-col justify-center items-center'>
+    <div className='w-full min-h-[150px] flex flex-col justify-start items-center'>
       <TextEffect
         per='char'
         preset='fade'
-        className='text-h3 sm:text-h2 font-semibold text-center mt-16'
         triggerInView={true}
+        className='text-2xl sm:text-h2 font-semibold text-center text-gray-900 mt-16'
       >
         {title}
       </TextEffect>
@@ -20,7 +20,7 @@ export default function SectionTitle({ title, paragraph }: SectionTitleProps) {
           per='char'
           preset='fade'
           triggerInView={true}
-          className='text-gray-500'
+          className='text-gray-500 max-w-[600px] text-center text-lg'
         >
           {paragraph}
         </TextEffect>

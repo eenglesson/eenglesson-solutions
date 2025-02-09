@@ -11,6 +11,7 @@ interface InfoCardProps {
   iconName: string;
   title: string;
   description: string;
+
   className?: string;
 }
 
@@ -25,8 +26,15 @@ export function InfoCard({
     (LucideIcons as unknown as Record<string, LucideIcon>)[iconName] ??
     LucideIcons.Zap;
   return (
-    <div
-      className={cn('flex flex-col items-center text-center p-6', className)}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.3 }}
+      className={cn(
+        'flex flex-col items-center rounded-xl bg-gray-100 text-center p-16 shadow-lg',
+        className
+      )}
     >
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -37,18 +45,25 @@ export function InfoCard({
       >
         {/* Glow effect as an absolutely positioned element with a negative inset */}
         <GlowEffect
-          colors={['#2563EB', '#14B8A6', '#A78BFA', '#3B82F6', '#60A5FA']}
-          mode='colorShift'
+          colors={[
+            '#F97316',
+            '#2563EB',
+            '#A78BFA',
+            '#14B8A6',
+            '#3B82F6',
+            '#60A5FA',
+          ]}
+          mode='rotate'
           blur='medium'
           duration={6}
           scale={1}
           // Negative inset makes it a “border” around the icon
-          className='absolute -inset-0 rounded-2xl'
+          className='absolute rounded-2xl'
         />
 
         {/* Icon container */}
-        <div className='relative p-3 rounded-2xl bg-gray-100 z-10'>
-          <Icon className='h-6 w-6 text-gray-800' />
+        <div className='relative p-3 rounded-2xl bg-gray-200 z-10'>
+          <Icon className='h-7 w-7' />
         </div>
       </motion.div>
 
@@ -67,11 +82,11 @@ export function InfoCard({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.3, delay: 0.3 }}
-        className='text-gray-500 text-small leading-relaxed max-w-sm'
+        className='text-gray-600 text-small leading-relaxed max-w-sm'
       >
         {description}
       </motion.p>
-    </div>
+    </motion.div>
   );
 }
 

@@ -8,39 +8,39 @@ export interface InfoCard {
 
 export const infoCards: InfoCard[] = [
   {
-    iconName: 'Zap',
-    title: 'Lightning Fast',
+    iconName: 'Pencil',
+    title: 'Modern Design',
     description:
-      'We craft websites optimized for speed, ensuring seamless user experiences that load in a flash.',
+      "Sleek, minimalist aesthetics that let your brand's personality shine through.",
   },
   {
-    iconName: 'Globe',
-    title: 'Global Reach',
+    iconName: 'Smartphone',
+    title: 'Responsive & Mobile-First',
     description:
-      'Our designs are built to captivate audiences worldwide, making your brand truly unforgettable.',
-  },
-  {
-    iconName: 'Palette',
-    title: 'Custom Designs',
-    description:
-      'Tailored to your vision, we deliver unique, eye-catching designs that elevate your online presence.',
-  },
-  {
-    iconName: 'Settings',
-    title: 'Dynamic Functionality',
-    description:
-      'From e-commerce to interactive features, we build websites that work as beautifully as they look.',
-  },
-  {
-    iconName: 'Shield',
-    title: 'Secure & Reliable',
-    description:
-      'Your site’s safety is our priority. We implement robust security measures to keep your data safe.',
+      'Websites that look and work flawlessly on any device, ensuring an optimal user experience.',
   },
   {
     iconName: 'Users',
-    title: 'User-Centered',
+    title: 'User-Centric Experience',
     description:
-      'Our designs prioritize user experience, ensuring intuitive navigation and engagement across devices.',
+      'Intuitive designs focused on user engagement and seamless navigation.',
+  },
+  {
+    iconName: 'Megaphone',
+    title: 'Brand-Driven Strategy',
+    description:
+      'Your brand is unique—our designs are tailored to reflect its values and vision.',
+  },
+  {
+    iconName: 'Gauge',
+    title: 'Technical Excellence',
+    description:
+      'Optimized for performance and SEO, ensuring fast load times and high search rankings.',
+  },
+  {
+    iconName: 'PuzzlePiece',
+    title: 'Tailored Solutions',
+    description:
+      'Custom website solutions that are as unique as your business.',
   },
 ];
