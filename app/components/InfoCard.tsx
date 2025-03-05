@@ -27,12 +27,12 @@ export function InfoCard({
     LucideIcons.Zap;
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.3 }}
       className={cn(
-        'flex flex-col items-center rounded-xl bg-gray-100 text-center p-16 shadow-lg',
+        'flex flex-col items-center rounded-xl text-center p-16 shadow-lg',
         className
       )}
     >
@@ -62,7 +62,7 @@ export function InfoCard({
         />
 
         {/* Icon container */}
-        <div className='relative p-3 rounded-2xl bg-gray-200 z-10'>
+        <div className='relative p-3 rounded-2xl bg-gray-100 z-10'>
           <Icon className='h-7 w-7' />
         </div>
       </motion.div>

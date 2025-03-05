@@ -84,7 +84,7 @@ export default function ServicesSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className='w-full py-16'>
+    <section className='w-full'>
       <motion.div
         className='w-full mx-auto '
         variants={containerVariants}
@@ -117,7 +117,7 @@ export default function ServicesSection() {
               />
               <div className='absolute top-0 left-0'>
                 <div className='flex flex-col items-start p-6'>
-                  <p className='text-h4 font-medium text-white'>
+                  <p className='text-h5 font-medium text-white'>
                     {service.title}
                   </p>
                   <span className='mb-2 text-base text-gray-200'>

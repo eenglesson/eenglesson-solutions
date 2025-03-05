@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'motion/react';
-import { ArrowUpRight } from 'lucide-react';
+import { CircleArrowRight } from 'lucide-react';
 
 const links = [
   { label: 'Home', path: '/' },
@@ -28,12 +28,12 @@ export default function Navbar() {
   // ---------------------------------------------------------
   useEffect(() => {
     const handleScroll = () => {
-      const heroElement = document.querySelector('.hero-parallax');
+      const heroElement = document.querySelector('.hero');
       if (!heroElement) return;
 
       const heroHeight = heroElement.getBoundingClientRect().height;
 
-      if (window.scrollY > heroHeight - 60) {
+      if (window.scrollY > heroHeight - 150) {
         setIsScrolled(true);
         // Also close the mobile nav if scrolling beyond hero
         setIsOpen(false);
@@ -256,10 +256,12 @@ export default function Navbar() {
             <button
               className={`${
                 isScrolled ? 'flex' : 'hidden'
-              } group text-black border items-center border-black hover:text-white hover:bg-black rounded-full px-4 py-1.5 gap-1`}
+              } group text-small w-fit text-black flex items-center justify-between md:text-body transition-transform duration-200 font-normal z-30 rounded-full border hover:text-white hover:bg-gray-950/90 border-black py-2 px-4 gap-2`}
             >
               Contact me
-              <ArrowUpRight className='w-[18px] h-[18px] transition-transform duration-200 group-hover:rotate-45' />
+              <div className='transition-transform duration-200 group-hover:-rotate-45'>
+                <CircleArrowRight className='md:w-[22px] md:h-[22px] w-[18px] h-[18px]' />
+              </div>
             </button>
           </motion.div>
         </div>

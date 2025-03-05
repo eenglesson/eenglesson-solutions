@@ -54,8 +54,7 @@ export default function RecurringClients() {
             <AnimatedNumber
               className='font-semibold text-h2'
               springOptions={{
-                bounce: 0,
-                duration: 5000,
+                duration: 4000,
               }}
               value={isInView ? obj.number : 0}
             />

@@ -9,9 +9,10 @@ type Link = {
 
 export default function Footer() {
   const companyLinks: Link[] = [
-    { name: 'All', path: '/' },
-    { name: 'Apparel', path: '/?filter=Apparel' },
-    { name: 'Accessories', path: '/?filter=Accessories' },
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+    { name: 'Work', path: '/work' },
+    { name: 'Contact', path: '/contact' },
   ];
 
   const socialLinks: Link[] = [
@@ -34,8 +35,8 @@ export default function Footer() {
           </aside>
 
           <p className='shrink-0 text-body max-w-[600px]'>
-            is a high-performance outdoor equipment company known for leading
-            innovations in climbing, skiing, and alpine technologies
+            I am a full stack developer with a passion for creating beautiful
+            and functional user experiences.
           </p>
           <div className='flex flex-col gap-2'>
             <a
@@ -44,13 +45,13 @@ export default function Footer() {
             >
               <Mail size={16} />
               <span className='text-dark70 text-body hover:text-black'>
-                Arcteryx@support.com
+                Eliasenglesson00@gmail.com
               </span>
             </a>
             <a className='hover:underline group flex items-center gap-2'>
               <Phone size={16} />
               <span className='text-dark70 text-body hover:text-black'>
-                +49 759 283 273
+                +46 76 310 59 56
               </span>
             </a>
           </div>
@@ -90,7 +91,7 @@ export default function Footer() {
           <div>
             <h4 className='font-normal text-h6 md:text-h4'>Contact Office</h4>
             <p className='mt-3 text-small sm:text-body max-w-[200px] lg:w-full'>
-              Vallgatan 8, 411 16 Gothenburg, Sweden
+              Smörkärnegatan 15, 412 78 Gothenburg, Sweden
             </p>
           </div>
         </section>
