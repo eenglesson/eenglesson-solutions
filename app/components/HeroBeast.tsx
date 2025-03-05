@@ -83,7 +83,6 @@ export default function HeroBeast({
 
               {/* Always Available container is always rendered */}
               <motion.div
-                layout
                 className='overflow-hidden'
                 initial={{ maxHeight: 0, opacity: 0 }}
                 transition={{ duration: 0.5 }}
