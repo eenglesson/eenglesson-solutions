@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import Image from 'next/image';
+
+import { Framer } from 'lucide-react';
 
 export default function Testimonials() {
   return (
@@ -21,17 +22,36 @@ export default function Testimonials() {
         <div className='grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-rows-2'>
           <Card className='grid grid-rows-[auto_1fr] gap-8 col-span-2 lg:row-span-2'>
             <CardHeader>
-              <Image
+              <div className='relative inline-block'>
+                <Framer
+                  className='size-12'
+                  style={{
+                    stroke: 'url(#framerGradient)',
+                    strokeWidth: 1.5,
+                  }}
+                />
+                <svg width='0' height='0' className='absolute'>
+                  <linearGradient
+                    id='framerGradient'
+                    gradientTransform='rotate(45)'
+                  >
+                    <stop offset='20%' stopColor='rgb(100,65,255)' />
+                    <stop offset='50%' stopColor='rgb(218,0,171)' />
+                    <stop offset='100%' stopColor='rgb(249,129,47)' />
+                  </linearGradient>
+                </svg>
+              </div>
+              {/* <Image
                 className='h-6 w-fit dark:invert'
-                src='https://html.tailus.io/blocks/customers/nike.svg'
+                src='https://html.tailus.io/blocks/customers/zapier.svg'
                 alt='Nike Logo'
                 height='24'
                 width='32'
-              />
+              /> */}
             </CardHeader>
             <CardContent>
               <blockquote className='grid h-full grid-rows-[1fr_auto] gap-6'>
-                <p className='text-2xl font-medium'>
+                <p className='text-3xl font-medium italic'>
                   Englesson Solutions revolutionized our digital presence. Their
                   tailored approach and innovative designs streamlined our
                   development process, delivering a website that truly reflects
@@ -41,21 +61,20 @@ export default function Testimonials() {
                 <div className='grid grid-cols-[auto_1fr] items-center gap-3'>
                   <Avatar className='size-12'>
                     <AvatarImage
-                      src='https://tailus.io/images/reviews/shekinah.webp'
-                      alt='Shekinah Tshiokufila'
+                      src='/woman1.jpg'
+                      alt='Anna Maria'
                       height='400'
                       width='400'
                       loading='lazy'
+                      className='object-cover object-top'
                     />
-                    <AvatarFallback>ST</AvatarFallback>
+                    <AvatarFallback>AM</AvatarFallback>
                   </Avatar>
 
                   <div>
-                    <cite className='text-sm font-medium'>
-                      Shekinah Tshiokufila
-                    </cite>
+                    <p className='text-sm font-medium'>Anna Maria</p>
                     <span className='text-muted-foreground block text-sm'>
-                      Software Ingineer
+                      Ecommerce Manager
                     </span>
                   </div>
                 </div>
@@ -65,7 +84,7 @@ export default function Testimonials() {
           <Card className='col-span-2 sm:col-span-1 md:col-span-2 lg:col-span-1'>
             <CardContent className='h-full pt-6'>
               <blockquote className='grid h-full grid-rows-[1fr_auto] gap-6'>
-                <p className='text-base font-medium'>
+                <p className='text-base font-medium italic'>
                   Englesson Solutions exceeded our expectations by delivering a
                   website that is both visually compelling and exceptionally
                   user-friendly.
@@ -74,18 +93,19 @@ export default function Testimonials() {
                 <div className='grid grid-cols-[auto_1fr] items-center gap-3'>
                   <Avatar className='size-12'>
                     <AvatarImage
-                      src='https://tailus.io/images/reviews/jonathan.webp'
+                      src='man1.jpg'
                       alt='Jonathan Yombo'
                       height='400'
                       width='400'
                       loading='lazy'
+                      className='object-cover object-top'
                     />
                     <AvatarFallback>JY</AvatarFallback>
                   </Avatar>
                   <div>
-                    <cite className='text-sm font-medium'>Jonathan Yombo</cite>
+                    <p className='text-sm font-medium'>Jonathan Yombo</p>
                     <span className='text-muted-foreground block text-sm'>
-                      Software Ingineer
+                      Software Engineer
                     </span>
                   </div>
                 </div>
@@ -95,7 +115,7 @@ export default function Testimonials() {
           <Card className='col-span-2 sm:col-span-1 lg:col-span-1 md:col-span-4 '>
             <CardContent className='h-full pt-6'>
               <blockquote className='grid h-full grid-rows-[1fr_auto] gap-6'>
-                <p className='text-base font-medium'>
+                <p className='text-base font-medium italic'>
                   Collaborating with Englesson Solutions was a game-changer.
                   Their expert team delivered a visually stunning, highly
                   functional website that captured our vision perfectly.
@@ -104,20 +124,19 @@ export default function Testimonials() {
                 <div className='grid items-center gap-3 [grid-template-columns:auto_1fr]'>
                   <Avatar className='size-12'>
                     <AvatarImage
-                      src='https://tailus.io/images/reviews/yucel.webp'
+                      src='man2.jpg'
                       alt='Yucel Faruksahan'
                       height='400'
                       width='400'
                       loading='lazy'
+                      className='object-cover object-top'
                     />
-                    <AvatarFallback>YF</AvatarFallback>
+                    <AvatarFallback>RP</AvatarFallback>
                   </Avatar>
                   <div>
-                    <cite className='text-sm font-medium'>
-                      Yucel Faruksahan
-                    </cite>
+                    <p className='text-sm font-medium'>Rikard Petersson</p>
                     <span className='text-muted-foreground block text-sm'>
-                      Creator, Tailkits
+                      Creator
                     </span>
                   </div>
                 </div>
@@ -127,7 +146,7 @@ export default function Testimonials() {
           <Card className='col-span-2  md:col-span-4 lg:col-span-2 '>
             <CardContent className='h-full pt-6'>
               <blockquote className='grid h-full  grid-rows-[1fr_auto] gap-6'>
-                <p className='text-base font-medium'>
+                <p className='text-base font-medium italic'>
                   The team at Englesson Solutions truly understands digital
                   transformation. Their innovative, responsive solutions have
                   boosted our online engagement and accelerated our business
@@ -137,18 +156,19 @@ export default function Testimonials() {
                 <div className='grid grid-cols-[auto_1fr] gap-3'>
                   <Avatar className='size-12'>
                     <AvatarImage
-                      src='https://tailus.io/images/reviews/rodrigo.webp'
+                      src='woman2.jpg'
                       alt='Rodrigo Aguilar'
                       height='400'
                       width='400'
                       loading='lazy'
+                      className='object-cover object-top'
                     />
-                    <AvatarFallback>YF</AvatarFallback>
+                    <AvatarFallback>LN</AvatarFallback>
                   </Avatar>
                   <div>
-                    <p className='text-sm font-medium'>Rodrigo Aguilar</p>
+                    <p className='text-sm font-medium'>Lucie Nigel</p>
                     <span className='text-muted-foreground block text-sm'>
-                      Creator, TailwindAwesome
+                      Creator
                     </span>
                   </div>
                 </div>

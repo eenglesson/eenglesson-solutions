@@ -10,13 +10,13 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <section className='mb-64'>
+      <section>
         <FeaturesSection />
         <Content1 />
         <Testimonials />
         <CTA />
+        <FooterSection />
       </section>
-      <FooterSection />
     </>
   );
 }

@@ -68,9 +68,12 @@ export default function Content1() {
                 height={612}
               />
               {/* Fade-out overlay */}
-              <div className='absolute bottom-0 left-0 z-10 w-full h-64 bg-gradient-to-t from-background to-transparent'></div>
+              <div
+                aria-hidden
+                className='bg-linear-to-b z-1 to-background absolute inset-0 from-transparent to-90% block'
+              ></div>
               <BorderBeam
-                duration={8}
+                duration={10}
                 colorFrom='rgb(62, 169, 210)'
                 colorTo='rgb(40, 112, 202)'
                 size={150}

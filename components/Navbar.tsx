@@ -84,7 +84,7 @@ export default function Navbar() {
       {/* Small Screen Navbar */}
       <nav
         ref={mobileNavRef}
-        className={`fixed top-0 left-0 z-50 w-full flex md:hidden items-center justify-between py-4 px-4 transition-all duration-300 ${
+        className={`fixed top-0 left-0 z-50 w-full flex md:hidden items-center justify-between py-4 px-6 transition-all duration-300 ${
           isScrolled
             ? "bg-gradient-to-b from-background/90 to-background/70 before:content-[''] before:absolute before:inset-0 before:pointer-events-none before:backdrop-blur-[40px] before:[mask-image:linear-gradient(to_bottom,transparent_40%,black_100%)] before:[-webkit-mask-image:linear-gradient(to_bottom,transparent_80%,black_100%)]"
             : 'bg-transparent before:content-none'
@@ -192,14 +192,14 @@ export default function Navbar() {
 
       {/* Large Screen Navbar */}
       <nav
-        className={`fixed top-0 left-0 z-50 w-full hidden md:flex h-16 items-center justify-between px-8 transition-all duration-300 ${
+        className={`fixed top-0 left-0 z-50 w-full hidden md:flex h-16 items-center justify-between transition-all duration-300 ${
           isScrolled
             ? "bg-gradient-to-b from-background/90 to-background/70 before:content-[''] before:absolute before:inset-0 before:pointer-events-none before:backdrop-blur-[40px] before:[mask-image:linear-gradient(to_bottom,transparent_40%,black_100%)] before:[-webkit-mask-image:linear-gradient(to_bottom,transparent_80%,black_100%)]"
             : 'bg-transparent'
         }    
         `}
       >
-        <div className='relative flex w-full justify-between mx-auto items-center'>
+        <div className='relative max-w-7xl flex w-full justify-between px-6  mx-auto items-center'>
           {/* Left Section */}
           <aside className={`flex justify-center h-full gap-2 text-foreground`}>
             <motion.div
@@ -259,7 +259,7 @@ export default function Navbar() {
             >
               Contact me
               <div className='transition-transform duration-200 group-hover:-rotate-45'>
-                <CircleArrowRight className='md:w-[22px] md:h-[22px] w-[18px] h-[18px]' />
+                <CircleArrowRight className='w-[18px] h-[18px]' />
               </div>
             </button>
           </motion.div>
