@@ -1,0 +1,84 @@
+import { Rocket, Settings } from 'lucide-react';
+import Image from 'next/image';
+import ColourfulText from './ui/colourful-text';
+import { BorderBeam } from './magicui/border-beam';
+
+export default function Content1() {
+  return (
+    <section className='py-16 md:py-32'>
+      <div className='mx-auto max-w-7xl space-y-8 px-6 md:space-y-16'>
+        <h2 className='relative z-10 max-w-2xl text-4xl font-medium lg:text-5xl'>
+          The <ColourfulText text='E | Englesson' /> Ecosystem is evolving to
+          power the future of digital innovation.
+        </h2>
+        <div className='grid gap-6 sm:grid-cols-2 md:gap-12 lg:gap-24'>
+          <div className='relative space-y-4'>
+            <p className='text-muted-foreground'>
+              E | Englesson is more than a platform—it’s a vibrant ecosystem
+              designed to empower your business through innovation and seamless
+              connectivity. Our integrated approach ensures you stay agile in an
+              ever-changing digital world.
+            </p>
+            <p className='text-muted-foreground'>
+              Discover a blend of dynamic performance and future-ready
+              technology that transforms your digital strategy into a
+              competitive advantage.
+            </p>
+
+            <div className='grid grid-cols-2 gap-3 pt-6 sm:gap-4'>
+              <div className='space-y-3'>
+                <div className='flex items-center gap-2'>
+                  <Settings className='size-5' />
+                  <h3 className='text-base font-medium'>
+                    Adaptive Infrastructure
+                  </h3>
+                </div>
+                <p className='text-muted-foreground text-base'>
+                  Experience unrivaled speed and responsiveness that keeps your
+                  business ahead in today’s fast-paced digital world.
+                </p>
+              </div>
+              <div className='space-y-2'>
+                <div className='flex items-center gap-2'>
+                  <Rocket className='size-5' />
+                  <h3 className='text-base font-medium'>Innovative Momentum</h3>
+                </div>
+                <p className='text-muted-foreground text-base'>
+                  Propel your business forward with cutting-edge solutions that
+                  spark creativity and drive exponential growth—transforming
+                  bold ideas into real-world success.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className='relative mt-6 sm:mt-0 overflow-hidden'>
+            <div className='bg-linear-to-b aspect-67/34 relative rounded-2xl from-zinc-100 to-transparent p-px dark:from-zinc-700'>
+              <Image
+                src='/shadcndb.png'
+                className='hidden rounded-[15px] dark:block'
+                alt='payments illustration dark'
+                width={1206}
+                height={612}
+              />
+              <Image
+                src='/shadcndbWhite.png'
+                className='rounded-[15px] shadow dark:hidden'
+                alt='payments illustration light'
+                width={1206}
+                height={612}
+              />
+              {/* Fade-out overlay */}
+              <div className='absolute bottom-0 left-0 z-10 w-full h-64 bg-gradient-to-t from-background to-transparent'></div>
+              <BorderBeam
+                duration={8}
+                colorFrom='rgb(62, 169, 210)'
+                colorTo='rgb(40, 112, 202)'
+                size={150}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
