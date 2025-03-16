@@ -1,8 +1,10 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion'; // Corrected import from 'motion/react' to 'framer-motion'
 import { CircleArrowRight } from 'lucide-react';
 import { TextEffect } from './ui/text-effect';
+import { usePathname } from 'next/navigation'; // Added import for usePathname
+import Link from 'next/link';
 
 const links = [
   { label: 'Home', path: '/' },
@@ -19,8 +21,8 @@ const transitionVariants = {
   },
   visible: (customDelay = 0) => ({
     opacity: 1,
-    y: 0,
     filter: 'blur(0px)',
+    y: 0,
     transition: {
       opacity: {
         type: 'spring',
@@ -39,6 +41,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [hasClicked, setHasClicked] = useState(false);
   const mobileNavRef = useRef<HTMLElement | null>(null);
+  const pathname = usePathname(); // Get the current pathname
 
   const toggleHamburger = () => {
     setIsOpen(!isOpen);
@@ -55,7 +58,7 @@ export default function Navbar() {
       }
     };
 
-    handleScroll(); // Check the initial scroll position
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -106,12 +109,10 @@ export default function Navbar() {
           </motion.div>
           <motion.div
             variants={transitionVariants}
-            custom={0.3} // this is your individual delay
+            custom={0.3}
             initial='hidden'
             animate='visible'
-            className={`flex border-r-[1.5px] 
-         border-foreground
-            `}
+            className='flex border-r-[1.5px] border-foreground'
           />
           <TextEffect
             per='char'
@@ -127,11 +128,11 @@ export default function Navbar() {
         {/* Hamburger Icon */}
         <aside
           onClick={toggleHamburger}
-          className={`flex flex-col gap-1.5 w-[26px] justify-center h-[26px] cursor-pointer z-30 text-foreground`}
+          className='flex flex-col gap-1.5 w-[26px] justify-center h-[26px] cursor-pointer z-30 text-foreground'
         >
           <motion.div
             variants={transitionVariants}
-            custom={0.7} // this is your individual delay
+            custom={0.7}
             initial='hidden'
             animate='visible'
           >
@@ -147,7 +148,7 @@ export default function Navbar() {
           </motion.div>
           <motion.div
             variants={transitionVariants}
-            custom={0.7} // this is your individual delay
+            custom={0.7}
             initial='hidden'
             animate='visible'
           >
@@ -187,7 +188,15 @@ export default function Navbar() {
               className='z-20'
             >
               <div>
-                <p className='text-lg'>{link.label}</p>
+                <p
+                  className={`text-lg ${
+                    pathname === link.path
+                      ? 'text-foreground'
+                      : 'text-muted-foreground'
+                  }`}
+                >
+                  {link.label}
+                </p>
               </div>
             </motion.div>
           ))}
@@ -200,15 +209,14 @@ export default function Navbar() {
           isScrolled
             ? "bg-gradient-to-b from-background/90 to-background/70 before:content-[''] before:absolute before:inset-0 before:pointer-events-none before:backdrop-blur-[40px] before:[mask-image:linear-gradient(to_bottom,transparent_40%,black_100%)] before:[-webkit-mask-image:linear-gradient(to_bottom,transparent_80%,black_100%)]"
             : 'bg-transparent'
-        }    
-        `}
+        }`}
       >
-        <div className='relative max-w-7xl flex w-full justify-between px-6  mx-auto items-center'>
+        <div className='relative max-w-7xl flex w-full justify-between px-6 mx-auto items-center'>
           {/* Left Section */}
-          <aside className={`flex justify-center h-full gap-2 text-foreground`}>
+          <aside className='flex justify-center h-full gap-2 text-foreground'>
             <motion.div
               variants={transitionVariants}
-              custom={0.2} // this is your individual delay
+              custom={0.2}
               initial='hidden'
               animate='visible'
             >
@@ -216,12 +224,11 @@ export default function Navbar() {
             </motion.div>
             <motion.div
               variants={transitionVariants}
-              custom={0.3} // this is your individual delay
+              custom={0.3}
               initial='hidden'
               animate='visible'
-              className={`flex border-r-[1.5px] border-foreground`}
+              className='flex border-r-[1.5px] border-foreground'
             />
-
             <TextEffect
               per='char'
               delay={0.4}
@@ -234,17 +241,39 @@ export default function Navbar() {
           </aside>
 
           {/* Center Section (Links) */}
-          <div className='absolute left-1/2 transform -translate-x-1/2 flex gap-8'>
+          <div className='absolute left-1/2 transform -translate-x-1/2 flex gap-10'>
             {links.map((link, i) => (
               <motion.div
                 variants={transitionVariants}
-                custom={0.7 + i * 0.1} // this is your individual delay
+                custom={0.7 + i * 0.1}
                 initial='hidden'
                 animate='visible'
                 key={i}
-                className={`underline-animation text-foreground`}
+                className='text-foreground cursor-pointer group overflow-hidden h-6'
               >
-                {link.label}
+                <motion.div
+                  className='flex flex-col h-12'
+                  initial={{ y: 0 }}
+                  whileHover={{ y: '-50%' }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                >
+                  <Link
+                    href={link.path}
+                    className={`flex h-6 items-center ${
+                      pathname === link.path
+                        ? 'text-foreground'
+                        : 'text-muted-foreground'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                  <Link
+                    href={link.path}
+                    className='flex h-6 items-center text-foreground'
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -252,15 +281,11 @@ export default function Navbar() {
           {/* Right Section */}
           <motion.div
             variants={transitionVariants}
-            custom={1.1} // this is your individual delay
+            custom={1.1}
             initial='hidden'
             animate='visible'
           >
-            <button
-              className={`
-            
-               group text-small w-fit text-foreground flex items-center justify-between md:text-body transition-transform duration-200 font-normal z-30 rounded-full border-foreground dark:hover:bg-accent/50 hover:bg-accent hover:cursor-pointer py-2 px-4 gap-2`}
-            >
+            <button className='group text-small w-fit text-foreground flex items-center justify-between md:text-body transition-transform duration-200 font-normal z-30 rounded-full border-foreground dark:hover:bg-accent/50 hover:bg-accent hover:cursor-pointer py-2 px-4 gap-2'>
               Contact me
               <div className='transition-transform duration-200 group-hover:-rotate-45'>
                 <CircleArrowRight className='w-[18px] h-[18px]' />

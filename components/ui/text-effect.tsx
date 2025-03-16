@@ -1,21 +1,20 @@
 'use client';
 import { cn } from '@/lib/utils';
 import {
-  AnimatePresence,
   motion,
   TargetAndTransition,
   Transition,
   Variant,
   Variants,
 } from 'motion/react';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export type PresetType = 'blur' | 'fade-in-blur' | 'scale' | 'fade' | 'slide';
 
 export type PerType = 'word' | 'char' | 'line';
 
 export type TextEffectProps = {
-  children: string;
+  children: React.ReactNode; // Changed from string to React.ReactNode
   per?: PerType;
   as?: keyof React.JSX.IntrinsicElements;
   variants?: {
@@ -27,7 +26,7 @@ export type TextEffectProps = {
   delay?: number;
   speedReveal?: number;
   speedSegment?: number;
-  trigger?: boolean;
+  trigger?: boolean; // Keep this if you plan to use it elsewhere
   onAnimationComplete?: () => void;
   onAnimationStart?: () => void;
   segmentWrapperClassName?: string;
@@ -214,7 +213,6 @@ export function TextEffect({
   delay = 0,
   speedReveal = 1,
   speedSegment = 1,
-  trigger = true,
   onAnimationComplete,
   onAnimationStart,
   segmentWrapperClassName,
@@ -222,7 +220,6 @@ export function TextEffect({
   segmentTransition,
   style,
 }: TextEffectProps) {
-  const segments = splitText(children, per);
   const MotionTag = motion[as as keyof typeof motion] as typeof motion.div;
 
   const baseVariants = preset
@@ -230,7 +227,6 @@ export function TextEffect({
     : { container: defaultContainerVariants, item: defaultItemVariants };
 
   const stagger = defaultStaggerTimes[per] / speedReveal;
-
   const baseDuration = 0.3 / speedSegment;
 
   const customStagger = hasTransition(variants?.container?.visible ?? {})
@@ -250,10 +246,6 @@ export function TextEffect({
         staggerChildren: customStagger ?? stagger,
         delayChildren: customDelay ?? delay,
         ...containerTransition,
-        exit: {
-          staggerChildren: customStagger ?? stagger,
-          staggerDirection: -1,
-        },
       }
     ),
     item: createVariantsWithTransition(variants?.item || baseVariants.item, {
@@ -262,31 +254,78 @@ export function TextEffect({
     }),
   };
 
+  // Add viewport detection logic
+  const ref = useRef(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          // Stop observing after the first intersection to animate only once
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 } // Trigger when 10% of the component is visible
+    );
+
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    // Cleanup observer on unmount
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
+
+  // Process children
+  const processChildren = () => {
+    const childrenArray = React.Children.toArray(children);
+    return childrenArray.map((child, index) => {
+      if (typeof child === 'string') {
+        const segments = splitText(child, per);
+        return segments.map((segment, segIndex) => (
+          <AnimationComponent
+            key={`string-${index}-${segIndex}`}
+            segment={segment}
+            variants={computedVariants.item}
+            per={per}
+            segmentWrapperClassName={segmentWrapperClassName}
+          />
+        ));
+      } else if (React.isValidElement(child)) {
+        return (
+          <motion.span
+            key={`element-${index}`}
+            variants={computedVariants.item}
+            className='inline-block'
+          >
+            {child}
+          </motion.span>
+        );
+      }
+      return null;
+    });
+  };
+
   return (
-    <AnimatePresence mode='popLayout'>
-      {trigger && (
-        <MotionTag
-          initial='hidden'
-          animate='visible'
-          exit='exit'
-          variants={computedVariants.container}
-          className={className}
-          onAnimationComplete={onAnimationComplete}
-          onAnimationStart={onAnimationStart}
-          style={style}
-        >
-          {per !== 'line' ? <span className='sr-only'>{children}</span> : null}
-          {segments.map((segment, index) => (
-            <AnimationComponent
-              key={`${per}-${index}-${segment}`}
-              segment={segment}
-              variants={computedVariants.item}
-              per={per}
-              segmentWrapperClassName={segmentWrapperClassName}
-            />
-          ))}
-        </MotionTag>
-      )}
-    </AnimatePresence>
+    <MotionTag
+      ref={ref}
+      initial='hidden'
+      animate={isInView ? 'visible' : 'hidden'}
+      variants={computedVariants.container}
+      className={className}
+      onAnimationComplete={onAnimationComplete}
+      onAnimationStart={onAnimationStart}
+      style={style}
+    >
+      {per !== 'line' ? <span className='sr-only'>{children}</span> : null}
+      {processChildren()}
+    </MotionTag>
   );
 }
