@@ -1,3 +1,11 @@
+import FooterSection from '@/components/Footer';
+import Navbar from '@/components/Navbar';
+
 export default function page() {
-  return <></>;
+  return (
+    <>
+      <Navbar />
+      <FooterSection />
+    </>
+  );
 }

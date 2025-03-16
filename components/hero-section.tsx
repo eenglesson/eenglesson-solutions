@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { AnimatedGroup } from './ui/animated-group';
 import { TextEffect } from './ui/text-effect';
 import LogoCloud from './logo-cloud';
+import Navbar from './Navbar';
 
 const transitionVariants = {
   item: {
@@ -44,6 +45,7 @@ const transitionVariants = {
 export default function HeroSection() {
   return (
     <>
+      <Navbar />
       <main className='overflow-hidden'>
         <div
           aria-hidden

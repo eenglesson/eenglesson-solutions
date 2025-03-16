@@ -260,23 +260,21 @@ export default function Navbar() {
                   className='flex flex-col h-12'
                   initial={{ y: 0 }}
                   whileHover={{ y: '-50%' }}
-                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
                 >
-                  <Link
-                    href={link.path}
-                    className={`flex h-6 items-center ${
-                      pathname === link.path
-                        ? 'text-foreground'
-                        : 'text-muted-foreground'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                  <Link
-                    href={link.path}
-                    className='flex h-6 items-center text-foreground'
-                  >
-                    {link.label}
+                  <Link href={link.path}>
+                    <p
+                      className={`flex h-6 items-center ${
+                        pathname === link.path
+                          ? 'text-foreground'
+                          : 'text-muted-foreground'
+                      }`}
+                    >
+                      {link.label}
+                    </p>
+                    <p className='flex h-6 items-center text-foreground'>
+                      {link.label}
+                    </p>
                   </Link>
                 </motion.div>
               </motion.div>
