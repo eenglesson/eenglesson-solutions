@@ -19,13 +19,17 @@ const transitionVariants = {
   },
   visible: (customDelay = 0) => ({
     opacity: 1,
-    filter: 'blur(0px)',
     y: 0,
+    filter: 'blur(0px)',
     transition: {
-      type: 'spring',
-      bounce: 0.3,
-      duration: 1.5,
-      delay: customDelay,
+      opacity: {
+        type: 'spring',
+        bounce: 0.3,
+        duration: 1.5,
+        delay: customDelay,
+      },
+      y: { type: 'spring', bounce: 0.3, duration: 1.5, delay: customDelay },
+      filter: { type: 'spring', bounce: 0, duration: 1.5, delay: customDelay },
     },
   }),
 };
@@ -91,15 +95,15 @@ export default function Navbar() {
         }`}
       >
         <aside className='flex justify-center z-40 h-full gap-2 text-foreground'>
-          <motion.p
+          <motion.div
             variants={transitionVariants}
-            custom={0.2} // this is your individual delay
+            custom={0.2}
             initial='hidden'
             animate='visible'
             className='text-lg'
           >
             E
-          </motion.p>
+          </motion.div>
           <motion.div
             variants={transitionVariants}
             custom={0.3} // this is your individual delay
@@ -232,7 +236,7 @@ export default function Navbar() {
           {/* Center Section (Links) */}
           <div className='absolute left-1/2 transform -translate-x-1/2 flex gap-8'>
             {links.map((link, i) => (
-              <motion.p
+              <motion.div
                 variants={transitionVariants}
                 custom={0.7 + i * 0.1} // this is your individual delay
                 initial='hidden'
@@ -241,7 +245,7 @@ export default function Navbar() {
                 className={`underline-animation text-foreground`}
               >
                 {link.label}
-              </motion.p>
+              </motion.div>
             ))}
           </div>
 

@@ -13,14 +13,15 @@ export default function CTA() {
         <div className='relative'>
           <div className='relative z-10 flex flex-col h-full space-y-4 md:w-1/2'>
             <p className='text-body'>
-              The digital landscape is constantly evolving. Don&apos;t let your
-              business fall behind. We create standout websites and digital
-              solutions that drive real growth and connect with your audience.
+              The digital world moves fast—don’t get left behind. At E |
+              Englesson, we create standout websites and solutions that drive
+              real growth and connect with your audience. Let’s make your online
+              presence your biggest asset.
             </p>
             <p>
-              Take the first step toward digital excellence today. Schedule a
-              free consultation and discover how we can transform your online
-              presence into your most powerful business asset.
+              <span className='font-bold'>Take the first step today.</span>{' '}
+              Schedule a free consultation and see how we can bring your vision
+              to life.
             </p>
             <div className='mt-4'>
               <Button

@@ -14,15 +14,14 @@ export default function Content1() {
         <div className='grid gap-6 sm:grid-cols-2 md:gap-12 lg:gap-24'>
           <div className='relative space-y-4'>
             <p className='text-muted-foreground'>
-              E | Englesson is more than a platform—it’s a vibrant ecosystem
-              designed to empower your business through innovation and seamless
-              connectivity. Our integrated approach ensures you stay agile in an
-              ever-changing digital world.
+              More than a service, we offer a future-ready foundation for your
+              digital success. Our ecosystem combines dynamic performance with
+              innovative technology, ensuring your website adapts to tomorrow’s
+              challenges.
             </p>
             <p className='text-muted-foreground'>
-              Discover a blend of dynamic performance and future-ready
-              technology that transforms your digital strategy into a
-              competitive advantage.
+              Experience unrivaled speed, flexibility, and cutting-edge
+              solutions that turn bold ideas into real-world wins.
             </p>
 
             <div className='grid grid-cols-2 gap-3 pt-6 sm:gap-4'>

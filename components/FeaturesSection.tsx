@@ -6,7 +6,14 @@ export default function FeaturesSection() {
   return (
     <section className='bg-gray-50 py-16 md:py-32 dark:bg-transparent'>
       <div className='mx-auto max-w-7xl px-6'>
-        <div className='relative'>
+        <div className='relative space-y-8 md:space-y-16'>
+          <div className='relative z-10 mx-auto max-w-xl space-y-6 text-center md:space-y-8'>
+            <h2 className='text-4xl font-medium lg:text-5xl'>Why Choose Us</h2>
+            <p>
+              We’re not just building websites—we’re creating digital success
+              stories. Here’s what sets us apart from the competition.
+            </p>
+          </div>
           <div className='relative z-10 grid grid-cols-6 gap-4'>
             <Card className='relative col-span-full flex overflow-hidden lg:col-span-2'>
               <CardContent className='relative m-auto flex flex-col justify-center items-center size-fit'>
@@ -30,10 +37,10 @@ export default function FeaturesSection() {
                   Tailored to Your Vision
                 </h2>
                 <p className='mt-4 text-center text-foreground'>
-                  Every business is unique. Our digital solutions are 100%
-                  customizable—designed to adapt to your specific brand, goals,
-                  and challenges. Experience a website that truly reflects your
-                  identity and scales with your success.
+                  Your business is unique, and your website should be too. We
+                  customize every solution to fit your brand, goals, and
+                  challenges perfectly. Experience a website that truly reflects
+                  your identity and scales with your success.
                 </p>
               </CardContent>
             </Card>
@@ -96,10 +103,10 @@ export default function FeaturesSection() {
                     Secure by default
                   </h2>
                   <p className='text-foreground'>
-                    Protect your online presence with our “secure by default”
-                    approach. We integrate industry-leading security measures
-                    from the start, ensuring your data and customer trust remain
-                    uncompromised—so you can focus on growth without worry.
+                    Your security is our priority. We integrate industry-leading
+                    security measures from the start, ensuring your data and
+                    customer trust remain uncompromised—so you can focus on
+                    growth without worry.
                   </p>
                 </div>
               </CardContent>
@@ -135,7 +142,7 @@ export default function FeaturesSection() {
                         Super Speed
                       </text>
                       <text x='290' y='33' fill='currentColor' fontSize='14'>
-                        127,57 mbps
+                        327,57 mbps
                       </text>
                     </g>
                     <path
@@ -160,11 +167,11 @@ export default function FeaturesSection() {
                         gradientUnits='userSpaceOnUse'
                       >
                         <stop
-                          className='text-yellow-300/15 dark:text-yellow-500/35'
+                          className='text-yellow-300/15 dark:text-yellow-500/15'
                           stopColor='currentColor'
                         />
                         <stop
-                          className='text-yellow-300/25 dark:text-yellow-500/35'
+                          className='text-yellow-300/5 dark:text-yellow-500/5'
                           offset='1'
                           stopColor='currentColor'
                           stopOpacity='0.103775'
@@ -186,10 +193,9 @@ export default function FeaturesSection() {
                     Lightning-Fast
                   </h2>
                   <p className='text-foreground'>
-                    Time is money. Our streamlined development process means
-                    your project moves swiftly from concept to launch, keeping
-                    you ahead of the competition. Get a robust, high-performing
-                    site delivered faster than you ever imagined.
+                    Speed matters. Our streamlined process delivers
+                    high-performing websites that load quickly, keeping your
+                    users happy and your business ahead.
                   </p>
                 </div>
               </CardContent>
@@ -205,11 +211,13 @@ export default function FeaturesSection() {
                       Proven Excellence, Trusted Results
                     </h2>
                     <p className='text-foreground'>
-                      Join a growing roster of satisfied clients who have
-                      transformed their digital footprint with our expert
-                      guidance. From startups to established enterprises, our
-                      strategies deliver measurable impact, building lasting
-                      trust and driving real business growth.
+                      Our clients see real impact increased engagement, stronger
+                      brands, and measurable growth. Join a growing roster of
+                      satisfied clients who have transformed their digital
+                      footprint with our expert guidance. From startups to
+                      established enterprises, our strategies deliver measurable
+                      impact, building lasting trust and driving real business
+                      growth.
                     </p>
                   </div>
                 </div>
@@ -247,11 +255,11 @@ export default function FeaturesSection() {
                         gradientUnits='userSpaceOnUse'
                       >
                         <stop
-                          className='text-violet-500/15 dark:text-violet-500/35'
+                          className='text-violet-500/15 dark:text-violet-500/15'
                           stopColor='currentColor'
                         />
                         <stop
-                          className='text-violet-500/15 dark:text-violet-500/35'
+                          className='text-violet-500/15 dark:text-violet-500/15'
                           offset='1'
                           stopColor='currentColor'
                           stopOpacity='0.01'
@@ -273,8 +281,9 @@ export default function FeaturesSection() {
                       Reliable. Responsive Support
                     </h2>
                     <p className='text-foreground'>
-                      Our dedicated support team is always ready to help. We
-                      offer rapid responses, clear communication, and proactive
+                      We’re here for you with fast, proactive help to keep your
+                      site running smoothly and your business thriving. We offer
+                      rapid responses, clear communication, and proactive
                       solutions—ensuring your business runs smoothly without
                       interruption. With us, you gain a reliable partner
                       committed to your continuous success.

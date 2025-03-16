@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <section>
+      <section className='w-[100vw] overflow-x-hidden'>
         <FeaturesSection />
         <Content1 />
         <Testimonials />

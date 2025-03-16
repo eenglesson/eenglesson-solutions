@@ -1,6 +1,7 @@
+'use client';
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CircleArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 
@@ -18,12 +19,24 @@ const transitionVariants = {
     },
     visible: {
       opacity: 1,
-      filter: 'blur(0px)',
       y: 0,
+      filter: 'blur(0px)',
       transition: {
-        type: 'spring',
-        bounce: 0.3,
-        duration: 1.5,
+        opacity: {
+          type: 'spring',
+          bounce: 0.3,
+          duration: 1.5,
+        },
+        y: {
+          type: 'spring',
+          bounce: 0.3,
+          duration: 1.5,
+        },
+        filter: {
+          type: 'spring',
+          bounce: 0, // Prevents overshooting into negative values
+          duration: 1.5,
+        },
       },
     },
   },
@@ -142,13 +155,12 @@ export default function HeroSection() {
                   className='mt-12 flex flex-col items-center justify-center gap-4 md:flex-row'
                 >
                   <Button
-                    asChild
-                    size='lg'
-                    className='rounded-xl px-5 text-base hover:bg-accent dark:hover:bg-accent/50 hover:text-foreground'
+                    className={`group hover:shadow-sm rounded-full py-5 text-base hover:bg-accent dark:hover:bg-accent/50 hover:text-foreground`}
                   >
-                    <Link href='#link'>
-                      <span className='text-nowrap'>Start Building</span>
-                    </Link>
+                    Book an appointment
+                    <div className='transition-transform duration-200 group-hover:-rotate-45'>
+                      <CircleArrowRight className='size-5' />
+                    </div>
                   </Button>
 
                   <Button
