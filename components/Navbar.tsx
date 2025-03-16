@@ -8,9 +8,9 @@ import Link from 'next/link';
 
 const links = [
   { label: 'Home', path: '/' },
-  { label: 'About', path: '/About' },
-  { label: 'Work', path: '/Work' },
-  { label: 'Contact', path: '/Contact' },
+  { label: 'About', path: '/about' },
+  { label: 'Solutions', path: '/solutions' },
+  { label: 'Contact', path: '/contact' },
 ];
 
 const transitionVariants = {
@@ -213,31 +213,36 @@ export default function Navbar() {
       >
         <div className='relative max-w-7xl flex w-full justify-between px-6 mx-auto items-center'>
           {/* Left Section */}
-          <aside className='flex justify-center h-full gap-2 text-foreground'>
-            <motion.div
-              variants={transitionVariants}
-              custom={0.2}
-              initial='hidden'
-              animate='visible'
+          <aside>
+            <Link
+              href='/'
+              className='flex justify-center h-full gap-2 text-foreground'
             >
-              <p className='text-lg'>E</p>
-            </motion.div>
-            <motion.div
-              variants={transitionVariants}
-              custom={0.3}
-              initial='hidden'
-              animate='visible'
-              className='flex border-r-[1.5px] border-foreground'
-            />
-            <TextEffect
-              per='char'
-              delay={0.4}
-              speedReveal={0.5}
-              preset='fade-in-blur'
-              className='flex flex-col h-full text-lg'
-            >
-              Englesson
-            </TextEffect>
+              <motion.div
+                variants={transitionVariants}
+                custom={0.2}
+                initial='hidden'
+                animate='visible'
+              >
+                <p className='text-lg'>E</p>
+              </motion.div>
+              <motion.div
+                variants={transitionVariants}
+                custom={0.3}
+                initial='hidden'
+                animate='visible'
+                className='flex border-r-[1.5px] border-foreground'
+              />
+              <TextEffect
+                per='char'
+                delay={0.4}
+                speedReveal={0.5}
+                preset='fade-in-blur'
+                className='flex flex-col h-full text-lg'
+              >
+                Englesson
+              </TextEffect>
+            </Link>
           </aside>
 
           {/* Center Section (Links) */}
@@ -255,7 +260,7 @@ export default function Navbar() {
                   className='flex flex-col h-12'
                   initial={{ y: 0 }}
                   whileHover={{ y: '-50%' }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
                 >
                   <Link
                     href={link.path}

@@ -76,7 +76,7 @@ export default function Testimonials() {
             viewport={{ once: true }}
             className='grid grid-rows-auto gap-8 col-span-2 lg:row-span-2'
           >
-            <Card className='flex  w-full h-full flex-col'>
+            <Card className='flex w-full h-full flex-col'>
               <CardHeader>
                 <div className='relative inline-block'>
                   <Framer
