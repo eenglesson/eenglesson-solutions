@@ -56,11 +56,10 @@ export function ContactForm() {
       const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-      console.log('Sending with:', {
-        serviceId,
-        templateId,
-        hasPublicKey: !!publicKey,
-      });
+      // Validate that environment variables are defined
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('Email service configuration is missing');
+      }
 
       await emailjs.send(
         serviceId,
