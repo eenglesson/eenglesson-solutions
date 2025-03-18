@@ -52,27 +52,36 @@ export function ContactForm() {
   // Handle form submission
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
     try {
+      console.log('Sending with:', {
+        serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        hasPublicKey: !!process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+      });
+
       await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!, // Your EmailJS Service ID
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!, // Your EmailJS Template ID
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         {
           first_name: data.firstName,
           last_name: data.lastName,
           from_email: data.email,
           message: data.message,
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! // Your EmailJS Public Key
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
+
       toast.message('Thank you for contacting us!', {
         description:
           'We will review your inquiry and get back to you as soon as possible.',
       });
 
-      form.reset(); // Optional: Reset form after successful submission
-    } catch {
+      form.reset();
+    } catch (error) {
+      console.error('EmailJS Error:', error);
       toast.error('Oops! Something went wrong.', {
-        description:
-          'We were unable to send your message. Please try again later.',
+        description: `Error sending message: ${
+          error instanceof Error ? error.message : 'Unknown error'
+        }`,
       });
     }
   };
