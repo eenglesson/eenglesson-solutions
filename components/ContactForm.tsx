@@ -17,12 +17,12 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { toast } from 'sonner';
 import { Card, CardHeader } from './ui/card';
 
 import { ShineBorder } from './magicui/shine-border';
 import { desktopVariants } from '@/lib/motionVariants';
 import { TextEffect } from './ui/text-effect';
+import { toast } from 'sonner';
 
 const FormSchema = z.object({
   firstName: z
@@ -73,9 +73,10 @@ export function ContactForm() {
         publicKey
       );
 
-      toast.message('Thank you for contacting us!', {
+      toast('Thank you for contacting us!', {
         description:
           'We will review your inquiry and get back to you as soon as possible.',
+        className: 'bg-background text-primary',
       });
 
       form.reset();
@@ -96,7 +97,7 @@ export function ContactForm() {
       viewport={{ once: true }}
     >
       <Form {...form}>
-        <Card className='p-6 sm:p-8 flex flex-col text-center gap-12 border-none shadow z-20 max-w-[500px] w-full relative bg-background'>
+        <Card className='p-6 sm:p-8 flex flex-col text-center gap-12 border-none shadow z-20 max-w-[500px] lg:w-[500px] w-full relative bg-background'>
           <ShineBorder
             duration={10}
             shineColor={['#A07CFE', '#FE8FB5', '#FFBE7B']}
@@ -132,13 +133,14 @@ export function ContactForm() {
           </CardHeader>
           <form onSubmit={form.handleSubmit(onSubmit)} className=' space-y-8'>
             {/* First Name Field */}
-            <div className='flex justify-between items-start gap-6'>
+            <div className='flex justify-between w-full items-start gap-6'>
               <motion.div
                 variants={desktopVariants}
                 initial='hidden'
                 whileInView='visible'
                 custom={1} // Use 0 for the first card, 1 for the second, etc.
                 viewport={{ once: true }}
+                className='w-full'
               >
                 <FormField
                   control={form.control}
@@ -161,6 +163,7 @@ export function ContactForm() {
                 whileInView='visible'
                 custom={2} // Use 0 for the first card, 1 for the second, etc.
                 viewport={{ once: true }}
+                className='w-full'
               >
                 <FormField
                   control={form.control}
