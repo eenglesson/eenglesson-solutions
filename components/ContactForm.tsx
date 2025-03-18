@@ -222,7 +222,6 @@ export function ContactForm() {
               initial='hidden'
               whileInView='visible'
               custom={5} // Use 0 for the first card, 1 for the second, etc.
-              viewport={{ once: true }}
             >
               <Button
                 type='submit'
