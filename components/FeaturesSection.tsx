@@ -80,7 +80,7 @@ const desktopVariants = {
 export default function FeaturesSection() {
   return (
     <section className='bg-gray-50 py-16 md:py-32 dark:bg-transparent'>
-      <div className='mx-auto max-w-7xl px-6'>
+      <div className='mx-auto max-w-7xl px-4'>
         <div className='relative space-y-8 md:space-y-16'>
           <div className='relative z-10 mx-auto max-w-xl space-y-6 text-center md:space-y-8'>
             <TextEffect
@@ -402,7 +402,7 @@ export default function FeaturesSection() {
               viewport={{ once: true }}
               className='col-span-full overflow-hidden lg:col-span-3'
             >
-              <Card className='relative '>
+              <Card className='relative w-full h-full flex flex-col'>
                 <CardContent className='grid h-full pt-6 sm:grid-cols-2'>
                   <div className='relative z-10 flex flex-col space-y-12 lg:space-y-6'>
                     <div className='relative flex aspect-square size-12 rounded-full border before:absolute before:-inset-2 before:rounded-full before:border border-gray-700 before:border-gray-800 dark:border-white/10 dark:before:border-white/5'>

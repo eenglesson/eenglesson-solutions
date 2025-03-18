@@ -40,7 +40,7 @@ const links = [
   },
 ];
 
-export default function FooterSection() {
+export default function Footer() {
   return (
     <footer className='border-b bg-white mt-80 sm:mt-96 dark:bg-transparent'>
       <div className='mx-auto max-w-7xl px-4 sm:px-6'>
@@ -66,14 +66,14 @@ export default function FooterSection() {
                 href='mailto:eliasenglesson00@gmail.com'
                 className='flex items-center gap-2 size-fit'
               >
-                <Mail className='size-5' />
-                <span className='text-muted-foreground hover:text-primary hover:underline text-base'>
+                <Mail size={18} className='shrink-0' />
+                <span className='text-muted-foreground hover:text-primary hover:underline text-sm'>
                   eliasenglesson00@gmail.com
                 </span>
               </Link>
               <div className='flex items-center gap-2 size-fit'>
-                <Phone className='size-5' />
-                <span className='text-muted-foreground hover:text-primary hover:underline text-base'>
+                <Phone size={18} className='shrink-0' />
+                <span className='text-muted-foreground hover:text-primary hover:underline text-sm'>
                   +46 76-310 59 56
                 </span>
               </div>

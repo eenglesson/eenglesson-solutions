@@ -44,7 +44,7 @@ const desktopVariants = {
 export default function CTA() {
   return (
     <section className='py-16 h-fit md:py-32'>
-      <div className='mx-auto max-w-7xl space-y-8 px-6 md:space-y-16'>
+      <div className='mx-auto max-w-7xl space-y-8 px-4 md:space-y-16'>
         <TextEffect
           preset='fade-in-blur'
           speedSegment={0.3}

@@ -42,7 +42,7 @@ const desktopVariants = {
 export default function Content1() {
   return (
     <section className='py-16 md:py-32'>
-      <div className='mx-auto max-w-7xl space-y-8 px-6 md:space-y-16'>
+      <div className='mx-auto max-w-7xl space-y-8 px-4 md:space-y-16'>
         <TextEffect
           preset='fade-in-blur'
           speedSegment={0.3}
@@ -65,14 +65,7 @@ export default function Content1() {
               digital success. Our ecosystem combines dynamic performance with
               innovative technology, ensuring your website adapts to tomorrow’s
               challenges.
-            </TextEffect>
-            <TextEffect
-              className='text-muted-foreground'
-              preset='fade-in-blur'
-              speedSegment={0.3}
-              as='p'
-              per='line'
-            >
+              <br />
               Experience unrivaled speed, flexibility, and cutting-edge
               solutions that turn bold ideas into real-world wins.
             </TextEffect>

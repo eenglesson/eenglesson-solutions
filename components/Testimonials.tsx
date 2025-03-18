@@ -43,7 +43,7 @@ const desktopVariants = {
 export default function Testimonials() {
   return (
     <section className='py-16 md:py-32 bg-gray-100 dark:bg-transparent'>
-      <div className='mx-auto max-w-7xl space-y-8 px-6 md:space-y-16'>
+      <div className='mx-auto max-w-7xl space-y-8 px-4 md:space-y-16'>
         <div className='relative z-10 mx-auto max-w-xl space-y-6 text-center md:space-y-12'>
           <TextEffect
             preset='fade-in-blur'

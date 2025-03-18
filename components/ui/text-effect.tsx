@@ -113,47 +113,54 @@ const AnimationComponent: React.FC<{
   variants: Variants;
   per: 'line' | 'word' | 'char';
   segmentWrapperClassName?: string;
-}> = React.memo(({ segment, variants, per, segmentWrapperClassName }) => {
-  const content =
-    per === 'line' ? (
-      <motion.span variants={variants} className='block'>
-        {segment}
-      </motion.span>
-    ) : per === 'word' ? (
-      <motion.span
-        aria-hidden='true'
-        variants={variants}
-        className='inline-block whitespace-pre'
-      >
-        {segment}
-      </motion.span>
-    ) : (
-      <motion.span className='inline-block whitespace-pre'>
-        {segment.split('').map((char, charIndex) => (
-          <motion.span
-            key={`char-${charIndex}`}
-            aria-hidden='true'
-            variants={variants}
-            className='inline-block whitespace-pre'
-          >
-            {char}
-          </motion.span>
-        ))}
-      </motion.span>
+  style?: React.CSSProperties; // Add style prop
+}> = React.memo(
+  ({ segment, variants, per, segmentWrapperClassName, style }) => {
+    const content =
+      per === 'line' ? (
+        <motion.span variants={variants} className='block' style={style}>
+          {segment}
+        </motion.span>
+      ) : per === 'word' ? (
+        <motion.span
+          aria-hidden='true'
+          variants={variants}
+          className='inline-block whitespace-pre'
+          style={style}
+        >
+          {segment}
+        </motion.span>
+      ) : (
+        <span className='inline-block whitespace-pre'>
+          {segment.split('').map((char, charIndex) => (
+            <motion.span
+              key={`char-${charIndex}`}
+              aria-hidden='true'
+              variants={variants}
+              className='inline-block whitespace-pre'
+              style={style} // Apply style to each character span
+            >
+              {char}
+            </motion.span>
+          ))}
+        </span>
+      );
+
+    if (!segmentWrapperClassName) {
+      return content;
+    }
+
+    const defaultWrapperClassName = per === 'line' ? 'block' : 'inline-block';
+
+    return (
+      <span className={cn(defaultWrapperClassName, segmentWrapperClassName)}>
+        {content}
+      </span>
     );
-
-  if (!segmentWrapperClassName) {
-    return content;
   }
+);
 
-  const defaultWrapperClassName = per === 'line' ? 'block' : 'inline-block';
-
-  return (
-    <span className={cn(defaultWrapperClassName, segmentWrapperClassName)}>
-      {content}
-    </span>
-  );
-});
+AnimationComponent.displayName = 'AnimationComponent';
 
 AnimationComponent.displayName = 'AnimationComponent';
 
@@ -296,6 +303,7 @@ export function TextEffect({
             variants={computedVariants.item}
             per={per}
             segmentWrapperClassName={segmentWrapperClassName}
+            style={style} // Pass the style prop here
           />
         ));
       } else if (React.isValidElement(child)) {
@@ -304,6 +312,7 @@ export function TextEffect({
             key={`element-${index}`}
             variants={computedVariants.item}
             className='inline-block'
+            style={style} // Optional: apply style to non-text elements too
           >
             {child}
           </motion.span>

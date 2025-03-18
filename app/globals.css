@@ -228,3 +228,19 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes shine {
+  0% {
+    background-position: 20% 20%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 20% 20%;
+  }
+}
+
+.animate-shine {
+  animation: shine var(--duration) infinite alternate;
+}

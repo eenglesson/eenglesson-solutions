@@ -91,7 +91,7 @@ export default function Navbar() {
       {/* Small Screen Navbar */}
       <nav
         ref={mobileNavRef}
-        className={`fixed top-0 left-0 z-50 w-full flex md:hidden items-center justify-between py-4 px-6 transition-all duration-300 ${
+        className={`fixed top-0 left-0 z-50 w-full flex md:hidden items-center justify-between py-4 px-4 transition-all duration-300 ${
           isScrolled
             ? "bg-gradient-to-b from-background/90 to-background/70 before:content-[''] before:absolute before:inset-0 before:pointer-events-none before:backdrop-blur-[40px] before:[mask-image:linear-gradient(to_bottom,transparent_40%,black_100%)] before:[-webkit-mask-image:linear-gradient(to_bottom,transparent_80%,black_100%)]"
             : 'bg-transparent before:content-none'
@@ -188,7 +188,8 @@ export default function Navbar() {
               className='z-20'
             >
               <div>
-                <p
+                <Link
+                  href={link.path}
                   className={`text-lg ${
                     pathname === link.path
                       ? 'text-foreground'
@@ -196,7 +197,7 @@ export default function Navbar() {
                   }`}
                 >
                   {link.label}
-                </p>
+                </Link>
               </div>
             </motion.div>
           ))}
@@ -211,7 +212,7 @@ export default function Navbar() {
             : 'bg-transparent'
         }`}
       >
-        <div className='relative max-w-7xl flex w-full justify-between px-6 mx-auto items-center'>
+        <div className='relative max-w-7xl flex w-full justify-between px-4 mx-auto items-center'>
           {/* Left Section */}
           <aside>
             <Link
@@ -248,22 +249,21 @@ export default function Navbar() {
           {/* Center Section (Links) */}
           <div className='absolute left-1/2 transform -translate-x-1/2 flex gap-10'>
             {links.map((link, i) => (
-              <motion.div
-                variants={transitionVariants}
-                custom={0.7 + i * 0.1}
-                initial='hidden'
-                animate='visible'
-                key={i}
-                className='text-foreground cursor-pointer group overflow-hidden h-6'
-              >
+              <Link href={link.path} key={i}>
                 <motion.div
-                  className='flex flex-col h-12'
-                  initial={{ y: 0 }}
-                  whileHover={{ y: '-50%' }}
-                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  variants={transitionVariants}
+                  custom={0.7 + i * 0.1}
+                  initial='hidden'
+                  animate='visible'
+                  className='text-foreground cursor-pointer group overflow-hidden h-6'
                 >
-                  <Link href={link.path}>
-                    <p
+                  <motion.div
+                    className='flex flex-col h-12'
+                    initial={{ y: 0 }}
+                    whileHover={{ y: '-50%' }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  >
+                    <div
                       className={`flex h-6 items-center ${
                         pathname === link.path
                           ? 'text-foreground'
@@ -271,13 +271,13 @@ export default function Navbar() {
                       }`}
                     >
                       {link.label}
-                    </p>
-                    <p className='flex h-6 items-center text-foreground'>
+                    </div>
+                    <div className='flex h-6 items-center text-foreground'>
                       {link.label}
-                    </p>
-                  </Link>
+                    </div>
+                  </motion.div>
                 </motion.div>
-              </motion.div>
+              </Link>
             ))}
           </div>
 
