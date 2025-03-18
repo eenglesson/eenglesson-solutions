@@ -91,13 +91,15 @@ export function AccordionIcons() {
                 <div className='flex items-center justify-between'>
                   <div className='flex items-center gap-3'>
                     <item.icon className='h-5 w-5 shrink-0' strokeWidth={2} />
-                    <span>{item.title}</span>
+                    <span className='text-sm sm:text-base'>{item.title}</span>
                   </div>
                   <ChevronUp className='shrink-0 h-4 w-4 transition-transform duration-200 group-data-[state=open]:-rotate-180 text-foreground' />
                 </div>
               </AccordionTrigger>
               <AccordionContent>
-                <p className='pt-2 text-muted-foreground'>{item.content}</p>
+                <p className='pt-2 text-sm text-muted-foreground'>
+                  {item.content}
+                </p>
               </AccordionContent>
             </AccordionItem>
           </motion.div>

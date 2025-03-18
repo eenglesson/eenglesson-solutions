@@ -220,8 +220,9 @@ export function ContactForm() {
             <motion.div
               variants={desktopVariants}
               initial='hidden'
-              whileInView='visible'
-              custom={5} // Use 0 for the first card, 1 for the second, etc.
+              animate='visible'
+              custom={5}
+              transition={{ delay: 0.5 }}
             >
               <Button
                 type='submit'
