@@ -52,9 +52,9 @@ export function ContactForm() {
   // Handle form submission
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
     try {
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+      const serviceId = 'service_hjyxwlb';
+      const templateId = 'template_mihs9rc';
+      const publicKey = 'HL7NjHi60Y8YVkWbx';
 
       console.log('Sending with:', {
         serviceId,
