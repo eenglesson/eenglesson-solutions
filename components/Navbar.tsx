@@ -98,31 +98,36 @@ export default function Navbar() {
         }`}
       >
         <aside className='flex justify-center z-40 h-full gap-2 text-foreground'>
-          <motion.div
-            variants={transitionVariants}
-            custom={0.2}
-            initial='hidden'
-            animate='visible'
-            className='text-lg'
+          <Link
+            href='/'
+            className='flex justify-center h-full gap-2 text-foreground'
           >
-            E
-          </motion.div>
-          <motion.div
-            variants={transitionVariants}
-            custom={0.3}
-            initial='hidden'
-            animate='visible'
-            className='flex border-r-[1.5px] border-foreground'
-          />
-          <TextEffect
-            per='char'
-            delay={0.4}
-            speedReveal={0.5}
-            preset='fade-in-blur'
-            className='flex flex-col h-full text-lg'
-          >
-            Englesson
-          </TextEffect>
+            <motion.div
+              variants={transitionVariants}
+              custom={0.2}
+              initial='hidden'
+              animate='visible'
+              className='text-lg'
+            >
+              E
+            </motion.div>
+            <motion.div
+              variants={transitionVariants}
+              custom={0.3}
+              initial='hidden'
+              animate='visible'
+              className='flex border-r-[1.5px] border-foreground'
+            />
+            <TextEffect
+              per='char'
+              delay={0.4}
+              speedReveal={0.5}
+              preset='fade-in-blur'
+              className='flex flex-col h-full text-lg'
+            >
+              Englesson
+            </TextEffect>
+          </Link>
         </aside>
 
         {/* Hamburger Icon */}
@@ -288,12 +293,14 @@ export default function Navbar() {
             initial='hidden'
             animate='visible'
           >
-            <button className='group text-small w-fit text-foreground flex items-center justify-between md:text-body transition-transform duration-200 font-normal z-30 rounded-full border-foreground dark:hover:bg-accent/50 hover:bg-accent hover:cursor-pointer py-2 px-4 gap-2'>
-              Contact me
-              <div className='transition-transform duration-200 group-hover:-rotate-45'>
-                <CircleArrowRight className='w-[18px] h-[18px]' />
-              </div>
-            </button>
+            <Link href='/contact'>
+              <button className='group text-small w-fit text-foreground flex items-center justify-between md:text-body transition-transform duration-200 font-normal z-30 rounded-full border-foreground dark:hover:bg-accent/50 hover:bg-accent hover:cursor-pointer py-2 px-4 gap-2'>
+                Contact me
+                <div className='transition-transform duration-200 group-hover:-rotate-45'>
+                  <CircleArrowRight className='w-[18px] h-[18px]' />
+                </div>
+              </button>
+            </Link>
           </motion.div>
         </div>
       </nav>

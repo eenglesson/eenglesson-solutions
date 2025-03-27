@@ -6,6 +6,7 @@ import { CircleArrowRight } from 'lucide-react';
 import { BorderBeam } from './magicui/border-beam';
 import { TextEffect } from './ui/text-effect';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const desktopVariants = {
   hidden: {
@@ -80,14 +81,16 @@ export default function CTA() {
               viewport={{ once: true }}
               className='mt-4'
             >
-              <Button
-                className={`group hover:shadow-sm rounded-full py-5 text-base hover:bg-accent dark:hover:bg-accent/50 hover:text-foreground`}
-              >
-                Book an appointment
-                <div className='transition-transform duration-200 group-hover:-rotate-45'>
-                  <CircleArrowRight className='size-5' />
-                </div>
-              </Button>
+              <Link href='/contact'>
+                <Button
+                  className={`group hover:shadow-sm rounded-full py-5 text-base hover:bg-accent dark:hover:bg-accent/50 hover:text-foreground`}
+                >
+                  Book an appointment
+                  <div className='transition-transform duration-200 group-hover:-rotate-45'>
+                    <CircleArrowRight className='size-5' />
+                  </div>
+                </Button>
+              </Link>
             </motion.div>
           </div>
           <motion.div

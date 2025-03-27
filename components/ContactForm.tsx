@@ -101,7 +101,7 @@ export function ContactForm() {
       viewport={{ once: true }}
     >
       <Form {...form}>
-        <Card className='p-6 sm:p-8 flex flex-col text-center gap-12 border-none shadow z-20 max-w-[500px] lg:w-[500px] w-full relative bg-background'>
+        <Card className='p-6 sm:p-8 flex flex-col gap-12 border-none shadow z-20 max-w-[500px] sm:w-[500px] w-full relative bg-background'>
           <ShineBorder
             duration={10}
             shineColor={['#A07CFE', '#FE8FB5', '#FFBE7B']}
@@ -129,7 +129,7 @@ export function ContactForm() {
               speedSegment={0.3}
               per='line'
               as='p'
-              className='text-base w-fit font-normal'
+              className='text-base w-fit font-normal text-center'
             >
               Take the first step toward transforming your online presence.
               Let&apos;s discuss how I can help you succeed.
