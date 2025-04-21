@@ -52,29 +52,16 @@ export function ContactForm() {
   // Handle form submission
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
     try {
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-      console.log('Service ID:', process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID);
-      console.log('Template ID:', process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID);
-      console.log('Public Key:', process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
-
-      // Validate that environment variables are defined
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error('Email service configuration is missing');
-      }
-
       await emailjs.send(
         'service_hjyxwlb',
-        templateId,
+        'template_xdf4vls',
         {
           first_name: data.firstName,
           last_name: data.lastName,
           from_email: data.email,
           message: data.message,
         },
-        publicKey
+        'HL7NjHi60Y8YVkWbx'
       );
 
       toast('Thank you for contacting us!', {
