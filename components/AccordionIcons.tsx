@@ -86,9 +86,9 @@ export function AccordionIcons() {
             custom={1} // Use 0 for the first card, 1 for the second, etc.
             viewport={{ once: true }}
           >
-            <AccordionItem value={item.id} key={item.id} className='py-4'>
+            <AccordionItem value={item.id} key={item.id}>
               <AccordionTrigger className='w-full text-left'>
-                <div className='flex items-center justify-between'>
+                <div className='flex items-center justify-between py-4'>
                   <div className='flex items-center gap-3'>
                     <item.icon className='h-5 w-5 shrink-0' strokeWidth={2} />
                     <span className='text-sm sm:text-base'>{item.title}</span>
@@ -97,7 +97,7 @@ export function AccordionIcons() {
                 </div>
               </AccordionTrigger>
               <AccordionContent>
-                <p className='pt-2 text-sm text-muted-foreground'>
+                <p className='pt-2 text-sm text-muted-foreground pb-4'>
                   {item.content}
                 </p>
               </AccordionContent>
