@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ArrowRight, CircleArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
@@ -43,6 +44,8 @@ const transitionVariants = {
 };
 
 export default function HeroSection() {
+  const router = useRouter();
+
   return (
     <>
       <Navbar />
@@ -97,7 +100,7 @@ export default function HeroSection() {
               <div className='hero text-center sm:mx-auto lg:mr-auto lg:mt-0'>
                 <AnimatedGroup variants={transitionVariants}>
                   <Link
-                    href='#link'
+                    href='https://www.coffeebreath.app/'
                     className='hover:bg-background dark:hover:border-t-border group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/10 dark:shadow-zinc-950'
                   >
                     <span className='text-foreground text-sm'>
@@ -153,6 +156,7 @@ export default function HeroSection() {
                   className='mt-12 flex flex-col items-center justify-center gap-4 md:flex-row'
                 >
                   <Button
+                    onClick={() => router.push('/contact')}
                     className={`group hover:shadow-sm rounded-xl py-5 text-base hover:bg-accent dark:hover:bg-accent/50 hover:text-foreground`}
                   >
                     Book an appointment
@@ -168,8 +172,8 @@ export default function HeroSection() {
                     variant='ghost'
                     className='h-10.5 rounded-xl px-5'
                   >
-                    <Link href='#link'>
-                      <span className='text-nowrap'>Request a demo</span>
+                    <Link href='/about'>
+                      <span className='text-nowrap'>Learn more</span>
                     </Link>
                   </Button>
                 </AnimatedGroup>
